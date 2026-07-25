@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comando - McShark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fondo: '#0b0d12',
+                        caja: '#1a1c25',
+                        textoVerde: '#b0ff00'
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0b0d12;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .boton-inicio {
+            background: #9498a1;
+            color: white;
+            font-size: 32px;
+            font-weight: 500;
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 40px;
+            width: 380px;
+        }
+        .tarjeta-academia {
+            background: #1a1c25;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        .texto-academia h3 {
+            color: #60b8a8;
+            font-size: 28px;
+            font-weight: 500;
+        }
+        .texto-academia h2 {
+            color: #4fd1c5;
+            font-size: 48px;
+            font-weight: bold;
+            margin: 5px 0 10px;
+        }
+        .texto-academia p {
+            color: #9498a1;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .boton-discord {
+            background: #252833;
+            color: #9498a1;
+            font-size: 32px;
+            padding: 12px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .hacha {
+            width: 180px;
+        }
+        .caja-imagen {
+            background: white;
+            border-radius: 30px;
+            border: 10px solid #1a1c25;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .caja-imagen img {
+            max-width: 100%;
+        }
+        .caja-comando {
+            background: #1a1c25;
+            border: 3px solid #333645;
+            border-radius: 15px;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .texto-comando {
+            color: #b0ff00;
+            font-size: 22px;
+            font-weight: bold;
+            user-select: text;
+        }
+        .icono-copiar {
+            color: #b5b5b5;
+            font-size: 36px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        .icono-copiar:active {
+            transform: scale(0.9);
+        }
+        #aviso {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #b5b5b5;
+            color: black;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="boton-inicio">Inicio</a>
+
+    <img src="logo-mcshark.png" alt="McShark" class="logo">
+
+    <div class="tarjeta-academia">
+        <div class="texto-academia">
+            <h3>Academia</h3>
+            <h2>McShark</h2>
+            <p>Aprende a construir como un profesional</p>
+            <!-- 👇 PON TU CÓDIGO DE INVITACIÓN AQUÍ -->
+            <a href="https://discord.gg/pmGKmPBaN" class="boton-discord">Discord</a>
+        </div>
+        <img src="hacha.png" alt="Hacha" class="hacha">
+    </div>
+
+    <div class="caja-imagen">
+        <img src="comando-1.png" alt="Imagen del comando">
+    </div>
+
+    <div class="caja-comando">
+        <span class="texto-comando">//g bloque y-2*(sqrt(1-sqrt(x^2+z^2)))^4+1<=0.03</span>
+        <i class="fa fa-clipboard icono-copiar" onclick="copiarComando()"></i>
+    </div>
+
+    <div id="aviso">¡Comando copiado!</div>
+
+    <script>
+        function copiarComando() {
+            const texto = document.querySelector('.texto-comando').textContent;
+            navigator.clipboard.writeText(texto).then(() => {
+                const aviso = document.getElementById('aviso');
+                aviso.style.opacity = '1';
+                setTimeout(() => aviso.style.opacity = '0', 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
